@@ -1,14 +1,8 @@
-// let dogDiv = document.getElementById('doginfo')
-// fetch('https://api.localhost:8080/dogs')
-// .then(res => res.json())
-// .then(dog => {
-//     dogDiv.innetHTML += `<p> ${dog.dog}  </p>`
-
-// })
-
+// javascript file to service index.html and interact with our API to populate the dog website
 
 const app = document.getElementById('root')
 
+// define picture of a cute dog
 const logo = document.createElement('img')
 logo.src = 'logo.png'
 
@@ -18,13 +12,17 @@ container.setAttribute('class', 'container')
 app.appendChild(logo)
 app.appendChild(container)
 
+// sends GET request to get all available dogs API endpoint
 var request = new XMLHttpRequest()
 request.open('GET', 'http://api.localhost:8080/dogs', true)
 
+// Browser will block CORS here and terminate script unless the functiopn is disabled per readme instructions
+// This is only an issue because of local hosting and browser settings
 request.onload = function () {
-  // Begin accessing JSON data here
+// Begin accessing JSON data here
 
   var data = JSON.parse(this.response)
+// runs as long as no error code
   if (request.status >= 200 && request.status < 400) {
     data.forEach(dogs => {
       const card = document.createElement('div')
@@ -49,6 +47,7 @@ request.onload = function () {
       card.appendChild(h3)
       card.appendChild(d1)
     })
+  // error handling
   } else {
     const errorMessage = document.createElement('marquee')
     errorMessage.textContent = `Bark, it's not working!`
