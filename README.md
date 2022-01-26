@@ -44,6 +44,7 @@ Install GO if not installed already.
 1. PKI 
 
 CREATE CERTIFICATE TRUSTED AUTHORITY
+
     go run \Gotificate\src\authority
 creates 'ca' certificate authority certificate. 
 below fields in create_authority.go set up basic authority info.
