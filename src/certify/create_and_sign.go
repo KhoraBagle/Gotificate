@@ -54,20 +54,12 @@ func main() {
 
 	// Public key
 	certOut, err := os.Create("certificate.crt")
-	if err != nil {
-		log.Println("write public key failed", err)
-		return
-	}
 	pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: cert_b})
 	certOut.Close()
 	log.Print("written certificate.crt\n")
 
 	// Private key
 	keyOut, err := os.OpenFile("certificate.key", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
-	if err != nil {
-		log.Println("write private key failed", err)
-		return
-	}
 	pem.Encode(keyOut, &pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(priv)})
 	keyOut.Close()
 	log.Print("written certificate.key\n")

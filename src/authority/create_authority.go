@@ -20,6 +20,8 @@ import (
 func main() {
 	ca := &x509.Certificate{
 		SerialNumber: big.NewInt(1653),
+
+		// Sets CA information
 		Subject: pkix.Name{
 			Organization:  []string{"DOG AUTHORITY!"},
 			Country:       []string{"USA"},
@@ -28,6 +30,7 @@ func main() {
 			StreetAddress: []string{"DOG PARK"},
 			PostalCode:    []string{"43221"},
 		},
+		// Sets valid date range
 		NotBefore:             time.Now(),
 		NotAfter:              time.Now().AddDate(1000, 0, 0),
 		IsCA:                  true,
@@ -35,7 +38,7 @@ func main() {
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 		BasicConstraintsValid: true,
 	}
-
+	// Creates CA public/private key pair
 	priv, _ := rsa.GenerateKey(rand.Reader, 2048)
 	pub := &priv.PublicKey
 	ca_b, err := x509.CreateCertificate(rand.Reader, ca, ca, pub, priv)
@@ -44,22 +47,14 @@ func main() {
 		return
 	}
 
-	// Public key
+	// Public key - not adding error handling beacuse there shouldnt be an error creating an empty file
 	certOut, err := os.Create("ca.crt")
-	if err != nil {
-		log.Println("write ca public key failed", err)
-		return
-	}
 	pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: ca_b})
 	certOut.Close()
 	log.Print("written ca.crt\n")
 
 	// Private key
 	keyOut, err := os.OpenFile("ca.key", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
-	if err != nil {
-		log.Println("write ca private key failed", err)
-		return
-	}
 	pem.Encode(keyOut, &pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(priv)})
 	keyOut.Close()
 	log.Print("written ca.key\n")
