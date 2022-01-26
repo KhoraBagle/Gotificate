@@ -34,10 +34,14 @@ DogPage.png in root directory is what final result should look like.
 
 ----GETTING STARTED-----
 
-Clonse repository from:  https://github.com/"your username"/Gotificate.git
+Install GO if not installed already.
+
+Clonse repository from:  https://github.com/KhoraBagle/Gotificate
 or with: 
-	git clone https://github.com/your_username_/Gotificate.git
-Install GO if not installed already. 
+
+	git clone https://github.com/KhoraBagle/Gotificate
+
+Open cloned repository.
 
 
 -----USAGE-----
