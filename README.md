@@ -34,7 +34,8 @@ DogPage.png in root directory is what final result should look like.
 ----GETTING STARTED-----
 
 Clonse repository from:  https://github.com/"your username"/Gotificate.git
-or with: git clone https://github.com/your_username_/Gotificate.git
+or with: 
+	git clone https://github.com/your_username_/Gotificate.git
 Install GO if not installed already. 
 
 
@@ -44,32 +45,32 @@ Install GO if not installed already.
 
 CREATE CERTIFICATE TRUSTED AUTHORITY
     go run \Gotificate\src\authority
-    creates 'ca' certificate authority certificate. 
-    below fields in create_authority.go set up basic authority info.
-			Organization:  []string{"DOG AUTHORITY"},
-			Country:       []string{"USA"},
-			Province:      []string{"OHIO"},
-			Locality:      []string{"COLUMBUS"},
-			StreetAddress: []string{"DOG PARK"},
-			PostalCode:    []string{"43221"},
+creates 'ca' certificate authority certificate. 
+below fields in create_authority.go set up basic authority info.
+	Organization:  []string{"DOG AUTHORITY"},
+	Country:       []string{"USA"},
+	Province:      []string{"OHIO"},
+	Locality:      []string{"COLUMBUS"},
+	StreetAddress: []string{"DOG PARK"},
+	PostalCode:    []string{"43221"},
 
-    below lines set up valid date range. 
-        NotBefore:             time.Now(),
-		NotAfter:              time.Now().AddDate(1000, 0, 0),
+below lines set up valid date range. 
+    NotBefore:             time.Now(),
+	NotAfter:              time.Now().AddDate(1000, 0, 0),
 
     go run \Gotificate\src\certify  
-    certify creates local certificate that is signed by the above created certificate authority
-    below fields in create_and_sign.go set up basic authority info.
-			Organization:  []string{"Dogwebsite.com"},
-			Country:       []string{"USA"},
-			Province:      []string{"OHIO"},
-			Locality:      []string{"COLUMBUS"},
-			StreetAddress: []string{"DOG PARK"},
-			PostalCode:    []string{"43221"},
+certify creates local certificate that is signed by the above created certificate authority
+below fields in create_and_sign.go set up basic authority info.
+	Organization:  []string{"Dogwebsite.com"},
+	Country:       []string{"USA"},
+	Province:      []string{"OHIO"},
+	Locality:      []string{"COLUMBUS"},
+	StreetAddress: []string{"DOG PARK"},
+	PostalCode:    []string{"43221"},
 
-    below lines set up valid date range. 
-        NotBefore:             time.Now(),
-		NotAfter:              time.Now().AddDate(1000, 0, 0),
+below lines set up valid date range. 
+    NotBefore:             time.Now(),
+	NotAfter:              time.Now().AddDate(1000, 0, 0),
 
 
 certificates are saved in root folder as ca.crt | key  and certificate.crt | key pairs
