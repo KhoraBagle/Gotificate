@@ -61,7 +61,7 @@ below lines set up valid date range.
     NotBefore:             time.Now(),
 	NotAfter:              time.Now().AddDate(1000, 0, 0),
 
-Oonce the authority certificate is created it will show up as ca.crt in root folder. open it and install it in trusted authority folder 
+Once the authority certificate is created it will show up as ca.crt in root folder. open it and install it in trusted authority folder 
 for your browsers to recognize it. 
 
 
