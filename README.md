@@ -2,7 +2,7 @@
 ----- ABOUT THIS PROJECT---- Gotificate is "GO" and "Certificate" as one word.
 This is an exploratory project created as a sample submission to Digicert with GO and Javascript. 
 It creates a structure with some information of different dogs that I am friends with and creates an API using Mux router in GO. 
-Javascript accesses the above api on either http or https localhost and shows dog information in browser. 
+Javascript calls the above api on either http or https localhost and shows dog information in browser. 
 PKI: Security authority can be created and security certificate can be issued via included code. 
 ------------------
 PKI using sha 256 rsa 2048
