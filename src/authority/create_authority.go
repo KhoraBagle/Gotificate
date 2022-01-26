@@ -47,7 +47,7 @@ func main() {
 		return
 	}
 
-	// Public key - not adding error handling beacuse there shouldnt be an error creating an empty file
+	// Public key
 	certOut, err := os.Create("ca.crt")
 	pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: ca_b})
 	certOut.Close()
