@@ -12,6 +12,10 @@ import (
 	"time"
 )
 
+// I really wanted to do this via eliptic curves but that would be out of scope of the time I had to develop this.
+// Additionally there is limiteed browser and os support currently for ECC.
+// However, considering that 256 bit ECC is 10,000 times stronger than 2048 RSA and is significatntly faster
+
 func main() {
 	ca := &x509.Certificate{
 		SerialNumber: big.NewInt(1653),

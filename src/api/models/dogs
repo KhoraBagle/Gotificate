@@ -1,9 +1,0 @@
-// models/dogs.go
-
-package models
-
-type Dog struct {
-	ID     uint   `json:"id" gorm:"primary_key"`
-	Title  string `json:"Breed"`
-	Author string `json:"Color"`
-}
