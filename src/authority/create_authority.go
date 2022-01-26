@@ -13,8 +13,9 @@ import (
 )
 
 // I really wanted to do this via eliptic curves but that would be out of scope of the time I had to develop this.
-// Additionally there is limiteed browser and os support currently for ECC.
-// However, considering that 256 bit ECC is 10,000 times stronger than 2048 RSA and is significatntly faster
+// Additionally there is currently still limiteed browser and os support for ECC.
+// However, considering that 256 bit ECC is 10,000 times stronger than 2048 RSA and is significatntly faster, it is the nest step
+// in assymetric encryption and I would love to explore/develop it further.
 
 func main() {
 	ca := &x509.Certificate{
