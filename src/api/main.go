@@ -65,7 +65,7 @@ func createDog(w http.ResponseWriter, r *http.Request) {
 	var newDog dog
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		fmt.Fprintf(w, "Ender new dog information please!!! Be honest, the dogs reputation is in your hands!")
+		fmt.Fprintf(w, "Enter new dog information please!!! Be honest, the dogs reputation is in your hands!")
 	}
 
 	json.Unmarshal(reqBody, &newDog)

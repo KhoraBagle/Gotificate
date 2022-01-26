@@ -21,7 +21,7 @@ func main() {
 	ca := &x509.Certificate{
 		SerialNumber: big.NewInt(1653),
 		Subject: pkix.Name{
-			Organization:  []string{"DOG AUTHORITY"},
+			Organization:  []string{"DOG AUTHORITY!"},
 			Country:       []string{"USA"},
 			Province:      []string{"OHIO"},
 			Locality:      []string{"COLUMBUS"},
@@ -46,13 +46,21 @@ func main() {
 
 	// Public key
 	certOut, err := os.Create("ca.crt")
+	if err != nil {
+		log.Println("write ca public key failed", err)
+		return
+	}
 	pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: ca_b})
 	certOut.Close()
-	log.Print("written cert.pem\n")
+	log.Print("written ca.crt\n")
 
 	// Private key
 	keyOut, err := os.OpenFile("ca.key", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
+	if err != nil {
+		log.Println("write ca private key failed", err)
+		return
+	}
 	pem.Encode(keyOut, &pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(priv)})
 	keyOut.Close()
-	log.Print("written key.pem\n")
+	log.Print("written ca.key\n")
 }
