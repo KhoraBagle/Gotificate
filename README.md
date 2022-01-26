@@ -47,6 +47,7 @@ CREATE CERTIFICATE TRUSTED AUTHORITY
     go run \Gotificate\src\authority
 creates 'ca' certificate authority certificate. 
 below fields in create_authority.go set up basic authority info.
+
 	Organization:  []string{"DOG AUTHORITY"},
 	Country:       []string{"USA"},
 	Province:      []string{"OHIO"},
@@ -55,12 +56,14 @@ below fields in create_authority.go set up basic authority info.
 	PostalCode:    []string{"43221"},
 
 below lines set up valid date range. 
+
     NotBefore:             time.Now(),
 	NotAfter:              time.Now().AddDate(1000, 0, 0),
 
     go run \Gotificate\src\certify  
 certify creates local certificate that is signed by the above created certificate authority
 below fields in create_and_sign.go set up basic authority info.
+
 	Organization:  []string{"Dogwebsite.com"},
 	Country:       []string{"USA"},
 	Province:      []string{"OHIO"},
