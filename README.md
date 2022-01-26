@@ -60,6 +60,8 @@ below lines set up valid date range.
     NotBefore:             time.Now(),
 	NotAfter:              time.Now().AddDate(1000, 0, 0),
 
+CREATE A CERTIFICATE SIGNED BY THE TRUSTED AUTHORITY
+
     go run \Gotificate\src\certify  
 certify creates local certificate that is signed by the above created certificate authority
 below fields in create_and_sign.go set up basic authority info.
@@ -72,6 +74,7 @@ below fields in create_and_sign.go set up basic authority info.
 	PostalCode:    []string{"43221"},
 
 below lines set up valid date range. 
+
     NotBefore:             time.Now(),
 	NotAfter:              time.Now().AddDate(1000, 0, 0),
 
@@ -80,7 +83,8 @@ certificates are saved in root folder as ca.crt | key  and certificate.crt | key
 
 
 API:
-go run \Gotificate\src\api     
+
+	go run \Gotificate\src\api     
 Starts API on port 8080. 
 api end points:
 
