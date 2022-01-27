@@ -149,6 +149,13 @@ Swap commenting out on the following lines of code in main.go (they are at the e
 	//	log.Fatal(http.ListenAndServeTLS(":8080", "certificate.crt", "certificate.key", router))
 	//	http.Handle("/", router)
 
+To look like this
+
+	//	log.Fatal(http.ListenAndServe(":8080", router))
+
+	log.Fatal(http.ListenAndServeTLS(":8080", "certificate.crt", "certificate.key", router))
+	http.Handle("/", router)
+
 Save main.go and rerun src\api\main.go The server will now use the previously created certificates and will run as https.
 You will also need to go back to step 1.2 and reissue the certificate to your local server address. 
 
@@ -157,6 +164,14 @@ You will also need to go back to step 1.2 and reissue the certificate to your lo
 If you are running the server with its default settings. Open any browser to:
 
 	http://api.localhost:8080/dogs 
+
+You can try fetching individual dogs, such as:
+
+	http://api.localhost:8080/dogs/Waf
+
+or 
+
+	http://api.localhost:8080/Yozhik
 
 If you modified the code to run the server with PKI then open the following:	
 	https://api.localhost:8080/dogs
@@ -173,9 +188,15 @@ The end points are as follows:
 
 3. FRONT END:
 
-open \Gotificate\src\webjs\index.html in any browser
+In this step we will run front end that calls one of our API endpoints "GET" all dogs and displays the list of all the dogs in memory. 
+Furthermore you can use other endpoints to modify the dog struct in memory and refresh the site to reflect it.
+
+If you are running the server with default settings without PKI go to step 3.1
+Else: step 3.2
 
 3.1 SERVER RUNNING WITHOUT PKI
+
+open \Gotificate\src\webjs\index.html in any browser
 
 The result should look like: DogPage.png in the root folder.
 If it does not it means that the browser is rejecting the jss call to our API. 
@@ -190,6 +211,14 @@ App called CORS Unblock will work.
 
 
 3.2 SERVER RUNNING WITH PKI
+
+Navigate to \Gotificate\src\webjs\ and open scripts.js
+Change line 17 to:
+
+	request.open('GET', 'https://api.localhost:8080/dogs', true)
+
+This will call the server on https instead of http. Save the file. 
+open \Gotificate\src\webjs\index.html in any browser. 
 
 The result should once again look like: DogPage.png in the root folder.
 
