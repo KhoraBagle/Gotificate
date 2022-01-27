@@ -52,7 +52,7 @@ Open terminal on repository location 'Gotificate' as root folder.
 
 To create 'ca' trusted authority certificate in your local repository folder run the below in terminal:
 
-	 go run src\authority\create_authority.go
+	 go run src/authority/create_authority.go
 
 
 To modify trusted authority settings: navigate to src\authority. type in terminal:
@@ -91,11 +91,11 @@ If you are in the authority folder in terminal, back out to root folder with:
 To create a local certificate that is signed by the above created certificate authority.
 From root folder run:
 
-	go run src\certify\create_and_sign.go
+	go run src/certify/create_and_sign.go
 
 To edit certificate settings navigate to src\certify\ or from root folder type:
 
-	cd src\certify\
+	cd src/certify/
 
 open create_and_sign.go in editor.
 Below fields in create_and_sign.go set up basic certificate  info.
@@ -126,15 +126,15 @@ If you made changes to the certificate and are in the authority folder in termin
 
 Make sure that you are in the root folder in terminal '\Gotificate' and start API with:
 
-	go run src\api\main.go     
+	go run src/api/main.go     
 
 This will start API on port 8080. 
 
 2.2 ----  MODIFY API (skip this step if you want to use default settings)-----
 
-Navigate to API folder cd src\api or via terminal with:
+Navigate to API folder cd src/api or via terminal with:
 
-	 cd src\api
+	 cd src/api
 
 Open main.go in editor
 The Mux server is set to run as  http because it is troublesome to issue security ceritifacte to local host/ip and have it authenticated. 
@@ -196,7 +196,7 @@ Else: step 3.2
 
 3.1 SERVER RUNNING WITHOUT PKI
 
-open \Gotificate\src\webjs\index.html in any browser
+open /Gotificate/src/webjs/index.html in any browser
 
 The result should look like: DogPage.png in the root folder.
 If all you see is a cute picture with no containers below, it means that the browser is rejecting the jss call to our API. 
@@ -211,13 +211,13 @@ App called CORS Unblock will work.
 
 3.2 SERVER RUNNING WITH PKI
 
-Navigate to \Gotificate\src\webjs\ and open scripts.js
+Navigate to /Gotificate/src/webjs/ and open scripts.js
 Change line 17 to:
 
 	request.open('GET', 'https://api.localhost:8080/dogs', true)
 
 This will call the server on https instead of http. Save the file. 
-open \Gotificate\src\webjs\index.html in any browser. 
+open /Gotificate/src/webjs/index.html in any browser. 
 
 The result should once again look like: DogPage.png in the root folder.
 
