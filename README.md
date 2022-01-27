@@ -126,7 +126,7 @@ If you made changes to the certificate and are in the authority folder in termin
 
 Make sure that you are in the root folder in terminal '\Gotificate' and start API with:
 
-	go run \Gotificate\src\api\main.go     
+	go run src\api\main.go     
 
 This will start API on port 8080. 
 
@@ -199,11 +199,10 @@ Else: step 3.2
 open \Gotificate\src\webjs\index.html in any browser
 
 The result should look like: DogPage.png in the root folder.
-If it does not it means that the browser is rejecting the jss call to our API. 
+If all you see is a cute picture with no containers below, it means that the browser is rejecting the jss call to our API. 
 The reason being that it is on local and running on http so the browser is blocking CORS (Cross original resource sharing) for security reasons.
-Basically because the server is not using PKI, it is on local, and it just looks really uncool to the browser. 
-You can install an app called CORS unblock and restart the index.html file for it to work. 
-Though I wouldnt instlal 3rd party apps on a work machine :/ 
+Basically, since the server is not using PK and it is on localhost, the browser blocks the API call for security considerations. 
+You can install an app called CORS unblock and restart the index.html file and it will work. 
 
 if you are running the server as https you will have to install the security certificate from the root folder. "ca.crt". install it to tursted authority folder. 
 if you are running it as http on local, most browsers will block api fetch, this is browser specific and will need to be disabled for front end to properly work. 
