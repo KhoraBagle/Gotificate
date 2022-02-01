@@ -60,7 +60,7 @@ var dogs = allDogs{
 	},
 }
 
-// This function created a a new dog slice in the dog struct and appends it to the existing dog struct.
+// This function created a a new dog and appends it to the allDogs slice.
 func createDog(w http.ResponseWriter, r *http.Request) {
 	var newDog dog
 	reqBody, err := ioutil.ReadAll(r.Body)
@@ -76,7 +76,7 @@ func createDog(w http.ResponseWriter, r *http.Request) {
 	fmt.Print(newDog.Name)
 }
 
-// gets and returns single dog ingo by name.
+// gets and returns single dog, by name.
 func getDogInfo(w http.ResponseWriter, r *http.Request) {
 	dogName := mux.Vars(r)["name"]
 
@@ -89,7 +89,7 @@ func getDogInfo(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Finds a dog entry in the struct, by name, and updates it per user input.
+// Finds a dog entry in the slice, by name, and updates it per user input.
 func updateDog(w http.ResponseWriter, r *http.Request) {
 	eventID := mux.Vars(r)["name"]
 	var updatedDog dog
@@ -111,7 +111,7 @@ func updateDog(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// deletes a dog slice from struct, by name.
+// deletes a dog from slice, by name.
 func deleteDog(w http.ResponseWriter, r *http.Request) {
 	dogName := mux.Vars(r)["name"]
 
@@ -123,7 +123,7 @@ func deleteDog(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// returns the entire dogs struct.
+// returns the entire dogs slice.
 func getAllDogs(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(dogs)
 
